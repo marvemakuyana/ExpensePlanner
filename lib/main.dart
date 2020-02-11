@@ -112,7 +112,8 @@ void _deleteTransaction(String id){
 }
   @override
   Widget build(BuildContext context) {
-  final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+ print('build () MyHomePageState');
+ final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
   final PreferredSizeWidget appBar = Platform.isIOS ? CupertinoNavigationBar(
     middle: Text(
       'Personal Expense'
@@ -150,7 +151,7 @@ void _deleteTransaction(String id){
                children: <Widget>[
                Text('Show Chart', style: Theme.of(context).textTheme.title),
                Switch.adaptive(
-                // activeColor: Theme.of(context).accentColor,
+                //activeColor: Theme.of(context).accentColor,
                  value: _showChart, 
                onChanged: (val) {
                  setState(() {

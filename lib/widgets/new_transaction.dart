@@ -1,3 +1,6 @@
+//import 'dart:html';
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -88,7 +91,16 @@ if(enteredTitle.isEmpty || enteredAmount <= 0 || _selectedDate == null){
                            : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
                            ),
                        ),
-                       FlatButton(
+                       Platform.isIOS ? CupertinoButton(
+                         //color: Colors.blue,
+                         child: Text('Choose Date', 
+                         style: TextStyle(
+                           fontWeight: FontWeight.bold
+                           ),
+                         ),
+                         onPressed: _presentDatePicker,
+                       )
+                       : FlatButton(
                          textColor: Theme.of(context).primaryColor,
                          child: Text('Choose Date', 
                          style: TextStyle(
@@ -97,7 +109,8 @@ if(enteredTitle.isEmpty || enteredAmount <= 0 || _selectedDate == null){
                            ), 
                          onPressed: _presentDatePicker,
                          ),
-                     ],),
+                     ],
+                     ),
                    ),
                     RaisedButton(
                       child: Text('Add Transaction'),
